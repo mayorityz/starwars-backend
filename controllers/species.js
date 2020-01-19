@@ -28,24 +28,29 @@ let check = arr => {
 
 exports.AllSpecies = (req, res, next) => {
   let species = [];
-  Films.fetchAll()
-    .then(result => {
-      let allSpeciesHistory = result.map(specie => {
-        species.push(...specie["species"]);
-        return species;
-      });
-      let mostAppearances = check(merge(allSpeciesHistory)[0]);
-      const finalResult = {};
-      Species.findByCharacterId(mostAppearances)
-        .then(result => {
-          let mapped = result.map(specie => {
-            const name = specie["name"];
-            const people = specie["people"].length;
-            finalResult[name] = people;
-          });
-          res.json(finalResult);
-        })
-        .catch(err => console.log(err));
-    })
-    .catch(err => console.log(err));
+  try {
+    Films.fetchAll()
+      .then(result => {
+        let allSpeciesHistory = result.map(specie => {
+          species.push(...specie["species"]);
+          return species;
+        });
+        let mostAppearances = check(merge(allSpeciesHistory)[0]);
+        const finalResult = [];
+        Species.findByCharacterId(mostAppearances)
+          .then(result => {
+            let mapped = result.map((specie, index) => {
+              finalResult.push({
+                specie: specie["name"],
+                appearances: specie["people"].length
+              });
+            });
+            res.status(200).json(finalResult);
+          })
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+  } catch (error) {
+    console.log(error);
+  }
 };

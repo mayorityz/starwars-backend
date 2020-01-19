@@ -1,4 +1,3 @@
-const mongoDb = require("mongodb");
 const dbConnection = require("../util/database").getDb;
 
 class Species {
@@ -6,7 +5,7 @@ class Species {
     const db = dbConnection();
     return db
       .collection("species")
-      .find({ id: { $in: species } }, { name: 1, people: 1 })
+      .find({ id: { $in: species } })
       .toArray()
       .then(result => {
         return result;

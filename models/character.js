@@ -1,4 +1,3 @@
-const mongoDb = require("mongodb");
 const dbConnection = require("../util/database").getDb;
 
 class Character {

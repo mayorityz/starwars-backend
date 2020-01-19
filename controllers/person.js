@@ -19,23 +19,28 @@ let check = arr => {
 };
 
 exports.FetchPerson = (req, res, next) => {
-  Films.fetchAll()
-    .then(result => {
-      let characters = [];
-      result.map(character => {
-        characters.push(...character["characters"]);
-        return characters;
-      });
-      let answer = check(characters);
-      Person.findByCharacterId(answer)
-        .then(result => {
-          // res.json(result);
-          let returnedName = result.map(name => {
-            return name["name"];
-          });
-          res.json(returnedName);
-        })
-        .catch(err => console.log(err));
-    })
-    .catch(err => console.log(err));
+  try {
+    Films.fetchAll()
+      .then(result => {
+        let characters = [];
+        result.map(character => {
+          characters.push(...character["characters"]);
+          return characters;
+        });
+        let answer = check(characters);
+        let mostApp = [];
+        Person.findByCharacterId(answer)
+          .then(result => {
+            // res.json(result);
+            let returnedName = result.map(name => {
+              mostApp.push({ who: name["name"] });
+            });
+            res.json(mostApp);
+          })
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+  } catch (error) {
+    console.log(error);
+  }
 };
