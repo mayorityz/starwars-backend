@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const db = require("../util/database").mongoConnect;
+const helmet = require("helmet");
 const app = express();
 
 const filmsRoute = require("../routes/films");
@@ -9,6 +10,8 @@ const speciesRoute = require("../routes/species");
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(helmet()); // security
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
