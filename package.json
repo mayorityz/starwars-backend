@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "start": "app.js",
-    "dev": "nodemon app.js"
+    "start": "node app.js",
+    "dev-start": "nodemon app.js"
   },
   "directories": {
     "test": "./test"
