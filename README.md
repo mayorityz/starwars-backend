@@ -6,6 +6,12 @@ To start the server locally, you must install development dependancy "NodeMon" t
 
 Run npm start to start you the server; it runs in the port 8080
 
-Routes
+### Dev Routes to test : easily tested via postman
 
-## for the longest movies crawl : localhost:8080/films
+- Longest Opening Crawl : localhost:8080/films
+- Most Species : localhost:8080/species
+- Most Appearances : localhost:8080/most-appearance
+
+### Deployed URL
+
+- https://starwars-backend-mayor.herokuapp.com/{endpoint}
