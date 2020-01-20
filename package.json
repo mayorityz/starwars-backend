@@ -4,7 +4,8 @@
   "description": "backend server for starwars app",
   "main": "app.js",
   "engines": {
-    "node": "8.11.3"
+    "node": "8.11.3",
+    "npm": "6.13.6"
   },
   "scripts": {
     "test": "mocha",
