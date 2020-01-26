@@ -7,7 +7,7 @@ const Connection = cb => {
   )
     .then(result => {
       _db = result.db();
-      cb();
+      cb("connected!!");
     })
     .catch(err => {
       console.log(err);

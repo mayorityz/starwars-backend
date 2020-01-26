@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "description": "backend server for starwars app",
   "main": "app.js",
+  "engines": {
+    "node": "8.11.3",
+    "npm": "6.13.6"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "test": "mocha",
+    "start": "node app.js"
+  },
+  "directories": {
+    "test": "./test"
   },
   "keywords": [
     "starwars",
@@ -17,10 +24,14 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "lodash": "^4.17.15",
     "mongodb": "^3.5.0",
     "mongoose": "^5.8.7"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "mocha": "^7.0.0",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   }
 }
