@@ -18,11 +18,14 @@ Run npm start to start you the server; it runs in the port 8080
 
 - https://starwars-backend-mayor.herokuapp.com/{endpoint}
 
-### Recommendation for the DB.
+### Recommendation for changes to the DB.
 
-- appearance
+I believe that mini adjustments can be made to some tables, depending on a wide range of queries, but for this assignment, I recommend these adjustment
 
-  - id - number
-  - film - array of object (references film collection)
+- species
 
-- vehicles
+  - movies - array of object (references film collection) // [{movies:{_id, appearances}]
+
+- people
+
+  -appearance - array of objects (references film collection) // [{movies:{_id, appearances}}]
