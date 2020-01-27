@@ -1,7 +1,14 @@
 const app = require("./server/index");
-const db = require("./util/database").mongoConnect;
+const mongoose = require("mongoose");
 
-db(() => {
-  console.log("Listening ...");
-  app.listen(process.env.PORT || 8080);
-});
+mongoose
+  .connect(
+    "mongodb://candidate:PrototypeRocks123654@ds345028.mlab.com:45028/star-wars",
+    { useUnifiedTopology: true, useNewUrlParser: true }
+  )
+  .then(result => {
+    app.listen(process.env.PORT || 8080);
+  })
+  .catch(err => {
+    console.log(err);
+  });
